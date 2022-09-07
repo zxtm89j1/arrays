@@ -82,6 +82,40 @@ const displayMovements = function (movements) {
 
 displayMovements(account1.movements);
 
+const user = 'Steven Thomas Williams'; // stw
+const username = user
+  .toLowerCase()
+  .split(' ')
+  .map(name => {
+    return name[0];
+  })
+  .join('');
+
+const createUsernames = accs => {
+  accs.forEach(acc => {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => {
+        return name[0];
+      })
+      .join('');
+  });
+
+  // const username = user
+  //   .toLowerCase()
+  //   .split(' ')
+  //   .map(name => {
+  //     return name[0];
+  //   })
+  //   .join('');
+
+  // return username;
+};
+
+// console.log(username);
+createUsernames(accounts);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -96,29 +130,43 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
-const eurToUsd = 1.1;
-const movementsUSD = movements.map(mov => {
-  return mov * eurToUsd;
+
+const deposits = movements.filter(mov => {
+  return mov > 0;
 });
 
-console.log(movements);
-console.log(movementsUSD);
+console.log(deposits);
 
-// using a loop (comparing map and looping)
-const movementsUSDfor = [];
+const depositsFor = [];
 for (const mov of movements) {
-  movementsUSDfor.push(mov * eurToUsd);
+  if (mov > 0) {
+    depositsFor.push(mov);
+  }
 }
+console.log(depositsFor);
+// const eurToUsd = 1.1;
+// const movementsUSD = movements.map(mov => {
+//   return mov * eurToUsd;
+// });
 
-console.log(movementsUSDfor);
+// console.log(movements);
+// console.log(movementsUSD);
 
-const movementsDescriptions = movements.map((mov, i) => {
-  return `Movement ${i + 1}: You ${
-    mov > 0 ? 'deposited' : 'withdrew'
-  } ${Math.abs(mov)}`;
-});
+// // using a loop (comparing map and looping)
+// const movementsUSDfor = [];
+// for (const mov of movements) {
+//   movementsUSDfor.push(mov * eurToUsd);
+// }
 
-console.log(movementsDescriptions);
+// console.log(movementsUSDfor);
+
+// const movementsDescriptions = movements.map((mov, i) => {
+//   return `Movement ${i + 1}: You ${
+//     mov > 0 ? 'deposited' : 'withdrew'
+//   } ${Math.abs(mov)}`;
+// });
+
+// console.log(movementsDescriptions);
 
 // currencies.forEach((value, key, map) => {
 //   console.log(`${key}: ${value}`);
