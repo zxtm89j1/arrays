@@ -270,7 +270,30 @@ const calcDisplaySummary = function (acc) {
 
   labelSumInterest.textContent = `${interest} €`;
 };
+const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(arr.flat());
 
+const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
+
+console.log(arrDeep.flat(2));
+
+// flat
+const accountMovements = accounts.map(acc => acc.movements);
+console.log(accountMovements);
+const allMovements = accountMovements.flat();
+console.log(allMovements);
+
+const overAllBalance = allMovements.reduce((acc, mov) => acc + mov, 0);
+console.log(overAllBalance);
+
+// flatMap
+const overAllBalance2 = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((acc, mov) => acc + mov, 0);
+
+console.log(overAllBalance2);
+
+/*
 // Equality
 console.log(movements);
 console.log(movements.includes(-130));
@@ -285,7 +308,7 @@ console.log(movements.every(mov => mov > 0));
 
 // Separate callback
 const deposit = mov => mov > 0;
-console.log(movements.some(deposit));
+console.log(movements.some(deposit)); */
 
 ////////////////////////////////////////////////////
 
