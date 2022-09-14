@@ -235,6 +235,29 @@ btnSort.addEventListener('click', function (e) {
 /////////////////////////////////////////////////
 // LECTURES
 
+const x = new Array(7);
+// x.fill(1);
+x.fill(1, 3, 5);
+console.log(x);
+
+// Array.from
+Array.from({ length: 7 }, () => 1);
+
+const z = Array.from({ length: 7 }, (_, i) => i + 1);
+
+console.log(z);
+
+labelBalance.addEventListener('click', function () {
+  const movementsUI = Array.from(
+    document.querySelectorAll('.movements__value'),
+    el => Number(el.textContent.replace('€', ''))
+  );
+
+  console.log(movementsUI);
+
+  const movementsUI2 = [...document.querySelectorAll('.movements__value')];
+});
+
 // Map
 const currencies = new Map([
   ['USD', 'United States dollar'],
